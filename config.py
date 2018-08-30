@@ -5,3 +5,6 @@ DATABASE_NAME = 'github'
 USER = 'test_user'
 PASSWORD = 'test_user'
 TABLE_NAME = "github_repo"
+API_GITHUB_URL = 'https://api.github.com/users/'
+TIMEOUT = 60
+MAX_WORKERS = 8
