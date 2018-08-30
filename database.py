@@ -21,14 +21,20 @@ class DataBase:
         try:
             if self.connect is not None:
                 cur = self.connect.cursor(buffered=True)
-                query = f"INSERT INTO {TABLE_NAME} (repo_name) VALUES(%s)"
-                cur.execute(query, [repo_name])
-                self.connect.commit()
+                val = '(%s), ' * len(repo_name)
+                val=val.strip(', ')
+                val = f"VALUES {val}"
+                query = f"INSERT INTO {TABLE_NAME} (repo_name) {val}"
+                cur.execute(query, repo_name)
                 cur.close()
+                self.connect.commit()
+                return True
             else:
                 raise Exception('there is no connection to the database')
         except Exception as e:
+            self.connect.rollback()
             sys.stderr.write(e)
+            return False
 
     def __create_table(self):
         try:
@@ -56,4 +62,7 @@ class DataBase:
                 raise Exception('there is no connection to the database')
         except Exception as e:
             sys.stderr.write(e)
+
+    def __del__(self):
+        self.connect.close()
 
