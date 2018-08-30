@@ -5,5 +5,3 @@ DATABASE_NAME = 'github'
 USER = 'test_user'
 PASSWORD = 'test_user'
 TABLE_NAME = "github_repo"
-CONNECT_TIMEOUT = 60
-PORT = 5432

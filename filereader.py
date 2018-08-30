@@ -1,4 +1,4 @@
-import os
+import os, sys
 from os.path import join
 from config import ENCODING
 
@@ -22,4 +22,4 @@ class ReadFile:
             else:
                 raise Exception(f'Warning file named ({filename}) is missing')
         except Exception as e:
-            print(e)
+            sys.stderr.write(e)
