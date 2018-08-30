@@ -22,7 +22,7 @@ class DataBase:
             if self.connect is not None:
                 cur = self.connect.cursor(buffered=True)
                 val = '(%s), ' * len(repo_name)
-                val=val.strip(', ')
+                val = val.strip(', ')
                 val = f"VALUES {val}"
                 query = f"INSERT INTO {TABLE_NAME} (repo_name) {val}"
                 cur.execute(query, repo_name)
@@ -57,7 +57,7 @@ class DataBase:
                 cur.execute(query)
                 res = cur.fetchone()
                 cur.close()
-                return res[0] in [TABLE_NAME] if len(res) else False
+                return res[0] in [TABLE_NAME] if res is not None and len(res) else False
             else:
                 raise Exception('there is no connection to the database')
         except Exception as e:
@@ -65,4 +65,3 @@ class DataBase:
 
     def __del__(self):
         self.connect.close()
-

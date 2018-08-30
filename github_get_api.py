@@ -31,7 +31,7 @@ class GithubReader:
                     try:
                         data = future.result()
                     except Exception as exc:
-                        sys.stderr.write('%r generated an exception: %s' % (url, exc))
+                        sys.stderr.write('%r generated an exception: %s \n' % (url, exc))
                     else:
                         all_repos_data.append(data)
         list_repo_max_stars = self.search_repo_by_stars(all_repos_data)
