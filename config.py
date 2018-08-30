@@ -9,3 +9,4 @@ API_GITHUB_URL = 'https://api.github.com/users/'
 TIMEOUT = 60
 MAX_WORKERS = 8
 GITHUB_USER_TOKEN = '7198b662ea384967e237ce7b8e2664c862c87050'
+
