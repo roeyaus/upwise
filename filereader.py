@@ -23,3 +23,4 @@ class ReadFile:
                 raise Exception(f'Warning file named ({filename}) is missing')
         except Exception as e:
             sys.stderr.write(e)
+
