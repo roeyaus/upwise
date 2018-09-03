@@ -1,6 +1,7 @@
 import threading
 
 import settings
+from database.models import GithubRepo
 from github_api import GitHubApi
 
 
@@ -8,7 +9,9 @@ def get_starred_repo(user):
     github = GitHubApi()
 
     try:
-        print(github.get_starred_repo(user))
+        repo = github.get_starred_repo(user)
+        GithubRepo.create(repo_name=repo)
+        print(repo)
     except Exception as e:
         print(e)
 
