@@ -10,7 +10,7 @@ def get_starred_repo(user):
 
     try:
         repo = github.get_starred_repo(user)
-        GithubRepo.create(repo_name=repo)
+        GithubRepo.get_or_create(repo_name=repo)
         print(repo)
     except Exception as e:
         print(e)
