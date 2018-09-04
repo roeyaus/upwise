@@ -15,9 +15,8 @@ def get_starred_repo(user):
     except Exception as e:
         print(e)
 
+
 if __name__ == '__main__':
-
-
     threads = []
     with open(settings.USERS_FILE) as users:
         for user in users:
